@@ -1,0 +1,7 @@
+config.ini
+.env
+conf
+.idea
+postgres-data
+.pytest_cache
+test.sqlite
