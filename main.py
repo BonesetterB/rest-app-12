@@ -10,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi_limiter import FastAPILimiter
 from src.conf.config import config
 import redis.asyncio as redis
+import os
 
 app= FastAPI()
 
@@ -76,4 +77,4 @@ async def startup():
     await FastAPILimiter.init(r)
 
 if __name__ == '__main__':
-    uvicorn.run("main:app", host="127.0.0.1", reload=True, log_level="info")
+    uvicorn.run("main:app", host="0.0.0.0", port=int(os.environ.get("PORT")), log_level="info")
