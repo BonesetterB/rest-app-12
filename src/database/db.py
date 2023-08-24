@@ -8,7 +8,7 @@ class Base(DeclarativeBase):
 
 class DatabaseSessionManager:
     def __init__(self, url: str):
-        self._engine = create_async_engine(url, echo=True)
+        self._engine = create_async_engine(url, echo=True, max_overflow=5)
         self._session_maker = sessionmaker(self._engine, expire_on_commit=False, class_=AsyncSession)
 
     async def session(self):
